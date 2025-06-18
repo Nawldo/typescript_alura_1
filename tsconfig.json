@@ -1,0 +1,11 @@
+{
+
+"compilerOptions": {        /*opções de compilador*/ 
+    "target": "es2022",      /*para qual versão do javascripet ele deve compilar o typescript*/
+    "outDir": "./dist/js/",  /*é o diretório onde é colocado todos os arquivos que o typesctript complila*/
+    "noEmitOnError": true    /*toda vez que ele identificar um erro ele não deve gerar um arquivo js na pasta de destino, só emite quando todos os erros forem corrigidos*/
+},
+     "include": [
+        "./src/**/*"
+    ]                 /*as pastas onde deve ser procurados os arquivos typescript para compilar*/
+}

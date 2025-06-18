@@ -1,13 +1,13 @@
 // Define o saldo inicial da conta bancária
-var saldo = 3000;
+let saldo = 3000;
 // Captura o elemento HTML onde o saldo será exibido
-var elementoSaldo = document.querySelector(".saldo-valor .valor");
+const elementoSaldo = document.querySelector(".saldo-valor .valor");
 if (elementoSaldo !== null)
     [
         elementoSaldo.textContent = saldo.toString()
     ];
 // Captura o formulário de nova transação na interface
-var elementoFormulario = document.querySelector(".block-nova-transacao form");
+const elementoFormulario = document.querySelector(".block-nova-transacao form");
 // Adiciona um ouvinte de evento para a submissão do formulário
 elementoFormulario.addEventListener("submit", function (event) {
     // Previne o comportamento padrão do formulário (recarregar a página)
@@ -19,12 +19,12 @@ elementoFormulario.addEventListener("submit", function (event) {
         // Interrompe a execução do código para evitar o processamento de uma transação inválida
         return;
     }
-    var inputTipoTransacao = elementoFormulario.querySelector("#tipoTransacao");
-    var inputValor = elementoFormulario.querySelector("#valor");
-    var inputData = elementoFormulario.querySelector("#data");
-    var tipoTransacao = inputTipoTransacao.value;
-    var valor = inputValor.valueAsNumber;
-    var data = new Date(inputData.value);
+    const inputTipoTransacao = elementoFormulario.querySelector("#tipoTransacao");
+    const inputValor = elementoFormulario.querySelector("#valor");
+    const inputData = elementoFormulario.querySelector("#data");
+    let tipoTransacao = inputTipoTransacao.value;
+    let valor = inputValor.valueAsNumber;
+    let data = new Date(inputData.value);
     if (tipoTransacao == "Depósito") {
         saldo += valor;
     }
@@ -36,7 +36,7 @@ elementoFormulario.addEventListener("submit", function (event) {
         return;
     }
     elementoSaldo.textContent = saldo.toString(); // Atualiza o conteúdo do elemento com o saldo atual
-    var novaTransacao = {
+    const novaTransacao = {
         tipoTransacao: tipoTransacao,
         valor: valor,
         data: data,
