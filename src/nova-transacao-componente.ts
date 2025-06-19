@@ -1,12 +1,3 @@
-// Define o saldo inicial da conta bancária
-let saldo = 3000; 
-
-// Captura o elemento HTML onde o saldo será exibido
-const elementoSaldo = document.querySelector(".saldo-valor .valor") as HTMLElement;
-if (elementoSaldo !== null) [
-    elementoSaldo.textContent = saldo.toString()
-]
-
 // Captura o formulário de nova transação na interface
 const elementoFormulario = document.querySelector(".block-nova-transacao form") as HTMLFormElement;
 
@@ -18,6 +9,7 @@ elementoFormulario.addEventListener("submit", function(event) {
 
     // Verifica se todos os campos obrigatórios foram preenchidos
     if (!elementoFormulario.checkValidity()){
+        
         // Exibe um alerta caso algum campo esteja inválido
         alert("Por favor, preencha todos os campos da transação!");
         
@@ -29,13 +21,13 @@ elementoFormulario.addEventListener("submit", function(event) {
     const inputValor = elementoFormulario.querySelector("#valor") as HTMLInputElement;
     const inputData = elementoFormulario.querySelector("#data") as HTMLInputElement;
 
-    let tipoTransacao: string = inputTipoTransacao.value;
+    let tipoTransacao: TipoTransacao = inputTipoTransacao.value as TipoTransacao;
     let valor: number = inputValor.valueAsNumber;
     let data: Date = new Date (inputData.value);
 
-    if (tipoTransacao == "Depósito") {
+    if (tipoTransacao == TipoTransacao.DEPOSITO) {
         saldo += valor;
-    } else if (tipoTransacao == "Transferência" || tipoTransacao == "Pagamento de Boleto") {
+    } else if (tipoTransacao == TipoTransacao.TRASFERENCIA || tipoTransacao == TipoTransacao.PAFAMENTOBOLETO) {
         saldo -= valor;
     } else {
          alert("Tipo de transação é inválido!");
@@ -44,7 +36,7 @@ elementoFormulario.addEventListener("submit", function(event) {
 
     elementoSaldo.textContent = saldo.toString();  // Atualiza o conteúdo do elemento com o saldo atual
 
-    const novaTransacao = {
+    const novaTransacao: Transacao = {
      tipoTransacao: tipoTransacao,
      valor: valor,
      data: data,

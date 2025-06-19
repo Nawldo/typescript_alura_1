@@ -1,11 +1,3 @@
-// Define o saldo inicial da conta bancária
-let saldo = 3000;
-// Captura o elemento HTML onde o saldo será exibido
-const elementoSaldo = document.querySelector(".saldo-valor .valor");
-if (elementoSaldo !== null)
-    [
-        elementoSaldo.textContent = saldo.toString()
-    ];
 // Captura o formulário de nova transação na interface
 const elementoFormulario = document.querySelector(".block-nova-transacao form");
 // Adiciona um ouvinte de evento para a submissão do formulário
@@ -25,10 +17,10 @@ elementoFormulario.addEventListener("submit", function (event) {
     let tipoTransacao = inputTipoTransacao.value;
     let valor = inputValor.valueAsNumber;
     let data = new Date(inputData.value);
-    if (tipoTransacao == "Depósito") {
+    if (tipoTransacao == TipoTransacao.DEPOSITO) {
         saldo += valor;
     }
-    else if (tipoTransacao == "Transferência" || tipoTransacao == "Pagamento de Boleto") {
+    else if (tipoTransacao == TipoTransacao.TRASFERENCIA || tipoTransacao == TipoTransacao.PAFAMENTOBOLETO) {
         saldo -= valor;
     }
     else {
