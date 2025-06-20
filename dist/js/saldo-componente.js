@@ -2,7 +2,11 @@
 let saldo = 3000;
 // Captura o elemento HTML onde o saldo será exibido
 const elementoSaldo = document.querySelector(".saldo-valor .valor");
-if (elementoSaldo !== null)
-    [
-        elementoSaldo.textContent = saldo.toString()
-    ];
+const elementoDataAcesso = document.querySelector("block-saldo .time");
+if (elementoSaldo !== null) {
+    elementoSaldo.textContent = formatarMoeda(saldo);
+}
+if (elementoDataAcesso !== null) {
+    const dataAcesso = new Date();
+    elementoDataAcesso.textContent = formatarData(dataAcesso, FormatoData.PADRAO);
+}
